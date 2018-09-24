@@ -17,10 +17,6 @@ class MulticastPingPong(DatagramProtocol):
 
     def datagramReceived(self, datagram, address):
         print("Datagram %s received from %s" % (datagram.decode(), repr(address)))
-        if datagram.decode() == "Client Ping" or datagram.decode() == "Client: Ping":
-            # Rather than replying to the group multicast address, we send the
-            # reply directly (unicast) to the originating port:
-            self.transport.write("Server: Pong".encode(), address)
 
 
 # We use listenMultiple=True so that we can run multicast_udp_server.py and

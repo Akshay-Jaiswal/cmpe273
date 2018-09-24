@@ -11,7 +11,7 @@ class MulticastPingClient(DatagramProtocol):
         self.transport.joinGroup("228.0.0.4")
         # Send to 228.0.0.4:9999 - all listeners on the multicast address
         # (including us) will receive this message.
-        self.transport.write("Client Ping".encode(), ("228.0.0.4", 9999))
+        self.transport.write("Hello World".encode(), ("228.0.0.4", 9999))
 
     def datagramReceived(self, datagram, address):
         print("Datagram %s received from %s" % (datagram.decode(), repr(address)))
